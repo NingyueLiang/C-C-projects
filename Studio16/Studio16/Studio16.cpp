@@ -6,18 +6,25 @@
 
 using namespace std;
 
-
 int main()
 {
 	TextFile f("test");
-	std::string s1 = "Hello, world!";
-	std::vector<char> v1(s1.begin(), s1.end());
+	string s1 = "Hello, world!";
+	vector<char> v1(s1.begin(), s1.end());
 	f.write(v1);
 	f.read();
 
-	std::string s2 = "Hello, world!";
-	std::vector<char> v2(s2.begin(), s2.end());
+	string s2 = "Nice to meet you!";
+	vector<char> v2(s2.begin(), s2.end());
 	f.write(v2);
 	f.read();
+	
+	string s3 = " How are you?";
+	vector<char> v3(s3.begin(), s3.end());
+	f.append(v3);
+	f.read();
+
+	cout << "File name is " << f.getName() << endl;
+	cout << "File size is " << f.getSize() << endl;
 }
 

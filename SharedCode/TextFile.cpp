@@ -1,6 +1,8 @@
 #include "TextFile.h"
 #include <iostream>
 
+using namespace std;
+
 TextFile::TextFile(std::string n)
 	: name(n) {}
 

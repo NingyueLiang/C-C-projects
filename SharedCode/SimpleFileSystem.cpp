@@ -57,10 +57,11 @@ int SimpleFileSystem::closeFile(AbstractFile* file) {
 }
 
 int SimpleFileSystem::deleteFile(std::string name) {
-	if (this->open.find(this->files[name]) != this->open.end()) {
+	if (this->files.count(name) == 0) {
 		return 9;
-	}
-	else {
+	} else if (this->open.find(this->files[name]) != this->open.end()) {
+		return 9;
+	} else {
 		AbstractFile* deleted = files[name];
 		this->files.erase(name);
 		delete deleted;

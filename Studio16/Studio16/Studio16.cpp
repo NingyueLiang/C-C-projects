@@ -32,7 +32,5 @@ int main()
 	vector<char> v4(s4.begin(), s4.end());
 	a->append(v4);
 	a->read();
-
-
 }
 

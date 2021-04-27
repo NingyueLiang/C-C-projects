@@ -11,6 +11,8 @@ namespace UnitTest
 	TEST_CLASS(textFile)
 	{
 	public:
+		
+
 		TEST_METHOD(contstructor)  // checks that the file is initialized with proper name and size, expects size to be 0 and the name to match the input to the constructor
 		{
 			std::string fileName = "FileName.txt";
@@ -268,5 +270,7 @@ namespace UnitTest
 			ImageFile* img = new ImageFile("FileName.img");
 			Assert::AreNotEqual(0, sfs.closeFile(img));
 		}
+
+	
 	};
 }

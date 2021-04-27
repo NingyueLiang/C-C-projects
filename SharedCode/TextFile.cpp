@@ -1,5 +1,3 @@
-//  Define the TextFile class here
-
 #include "TextFile.h"
 #include <iostream>
 

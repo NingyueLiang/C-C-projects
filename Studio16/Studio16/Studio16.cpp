@@ -26,5 +26,13 @@ int main()
 
 	cout << "File name is " << f.getName() << endl;
 	cout << "File size is " << f.getSize() << endl;
+
+	AbstractFile* a = &f;
+	string s4 = " I'm good, thanks!";
+	vector<char> v4(s4.begin(), s4.end());
+	a->append(v4);
+	a->read();
+
+
 }
 

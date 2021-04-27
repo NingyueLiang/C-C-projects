@@ -39,6 +39,8 @@ namespace UnitTest
 			Assert::AreEqual(static_cast<unsigned int>(fileSize + v.size()), t.getSize());
 
 		}
+
+	
 		TEST_METHOD(read) // tests that the read function outputs the contents of the file
 		{
 			std::string fileName = "FileName.txt";
@@ -80,6 +82,9 @@ namespace UnitTest
 			// ASSIGN COUT BACK TO STDOUT
 			cout.rdbuf(backup);
 			Assert::AreEqual(wordShouldBe, word);
+			
 		}
+		
+		
 	};
 }

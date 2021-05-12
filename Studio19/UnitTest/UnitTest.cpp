@@ -521,5 +521,6 @@ namespace UnitTest
 			// ASSIGN COUT BACK TO STDOUT
 			cout.rdbuf(backup);
 		}
+		
 	};
 }

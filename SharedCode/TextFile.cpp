@@ -1,4 +1,5 @@
 #include "TextFile.h"
+#include "AbstractFileVisitor.h"
 #include <iostream>
 
 using namespace std;
@@ -25,9 +26,16 @@ int TextFile::append(std::vector<char> a) {
 	return 0;
 }
 
-void TextFile::read() {
+vector<char> TextFile::read() {
+	/*
 	for (auto &c : contents) {
 		std::cout << c;
 	}
 	std::cout << "\n";
+	*/
+	return this->contents;
+}
+
+void TextFile::accept(AbstractFileVisitor* v) {
+	v->visit_TextFile(this);
 }

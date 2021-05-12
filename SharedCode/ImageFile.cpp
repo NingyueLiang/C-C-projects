@@ -1,4 +1,5 @@
 #include "ImageFile.h"
+#include "AbstractFileVisitor.h"
 #include <iostream>
 
 ImageFile::ImageFile(std::string n)
@@ -37,7 +38,8 @@ int ImageFile::append(std::vector<char> a) {
 	return 4;
 }
 
-void ImageFile::read() {
+std::vector<char> ImageFile::read() {
+	/*
 	int n = this->size - '0';
 	for (int y = n - 1; y >= 0; --y) {
 		for (int x = 0; x < n; ++x) {
@@ -45,4 +47,10 @@ void ImageFile::read() {
 		}
 		std::cout << "\n";
 	}
+	*/
+	return this->contents;
+}
+
+void ImageFile::accept(AbstractFileVisitor* v) {
+	v->visit_ImageFile(this);
 }

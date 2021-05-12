@@ -39,15 +39,6 @@ int ImageFile::append(std::vector<char> a) {
 }
 
 std::vector<char> ImageFile::read() {
-	/*
-	int n = this->size - '0';
-	for (int y = n - 1; y >= 0; --y) {
-		for (int x = 0; x < n; ++x) {
-			std::cout << this->contents[y * n + x];
-		}
-		std::cout << "\n";
-	}
-	*/
 	return this->contents;
 }
 

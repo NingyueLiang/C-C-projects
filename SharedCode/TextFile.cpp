@@ -27,12 +27,6 @@ int TextFile::append(std::vector<char> a) {
 }
 
 vector<char> TextFile::read() {
-	/*
-	for (auto &c : contents) {
-		std::cout << c;
-	}
-	std::cout << "\n";
-	*/
 	return this->contents;
 }
 

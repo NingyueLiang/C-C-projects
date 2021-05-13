@@ -4,7 +4,7 @@
 
 class TouchCommand : public AbstractCommand {
 public:
-	TouchCommand(AbstractFileFactory* f, AbstractFileSystem* s);
+	TouchCommand( AbstractFileSystem* s, AbstractFileFactory* f);
 	void displayInfo() override;
 	int execute(std::string filename) override;
 	~TouchCommand() = default;
@@ -13,4 +13,4 @@ private:
 	AbstractFileSystem* sys;
 };
 
-enum touch {success = 0, cannot_create_file = 60, cannot_add_file = 61};
+enum touch {cannot_create_file = 60, cannot_add_file = 61};

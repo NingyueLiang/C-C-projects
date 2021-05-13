@@ -17,27 +17,25 @@ void CommandPrompt::setFileFactory(AbstractFileFactory* f) {
 }
 
 int CommandPrompt::addCommand(std::string s, AbstractCommand* c) {
-	if (commands.find(s) != commands.end()) {
+	if (commands.find(s) == commands.end()) {
 		commands.insert(std::pair<std::string, AbstractCommand*>(s, c));
 		return 0;
 	}
 	else {
-		return 60;
+		return 63;
 	}
 	
 }
 
 void CommandPrompt::listCommands() {
-	for (auto& command : commands) {
+	for (auto& command : this->commands) {
 		cout << command.first << endl;
 	}
 }
 
 std::string CommandPrompt::prompt() {
 	string in;
-	cout << "Enter a command, q to quit, help for a list of commands, or\
-		help followed by a command name for more information about\
-		that command." << endl;
+	cout << "Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command." << endl;
 	cout << "$";
     getline(cin, in);
     return in;
@@ -47,10 +45,10 @@ int CommandPrompt::run() {
 	while (1) {
 		string in = prompt();
 		if (in == "q") {
-			return 61;
+			return 64;
 		}
 		else if (in == "help") {
-			listCommands();
+			this->listCommands();
 		}
 		else { 
 			if (in.find(" ") == in.npos) {
@@ -65,18 +63,32 @@ int CommandPrompt::run() {
 				}
 			}
 			else {
-				string first, latter;
+				string first, second, latter;
 				istringstream iss(in);
 				iss >> first;
-				getline(iss, latter);
-				if (commands.find(latter) != commands.end()) {
-					commands[latter]->displayInfo();
+				if (first == "help") {
+					iss >> second;
+					if (commands.find(second) != commands.end()) {
+					    commands[second]->displayInfo();
+				    }
+				    else {
+					    cout << "Command is invalid!" << endl;
+				    }
 				}
 				else {
-					cout << "Command is invalid!" << endl;
+					if (commands.find(first) != commands.end()) {
+						getline(iss, latter);
+						if (int r = commands[first]->execute(latter) != 0) {
+							cout << "Command execution failed!" << endl;
+						}
+					}
+					else {
+						cout << "Command is invalid!" << endl;
+					}
 				}
 			}
 		}
-	}
+		cout << "" << endl;
+	}	
 }
 

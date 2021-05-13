@@ -47,3 +47,16 @@ int SimpleFileSystem::deleteFile(std::string name) {
 	}
 }
 
+std::set<std::string> SimpleFileSystem::getFileNames() {
+	
+	std::set<std::string> names = {};
+
+	std::map<std::string, AbstractFile*>::iterator it;
+
+	for (auto it = files.begin(); it != files.end(); it++)
+	{
+		names.insert(it->first);
+	}
+
+	return names;
+}

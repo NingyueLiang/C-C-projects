@@ -14,7 +14,7 @@ void BasicDisplayVisitor::visit_TextFile(TextFile* f) {
 
 void BasicDisplayVisitor::visit_ImageFile(ImageFile* f) {
 	int n = sqrt(f->getSize());
-	vector<char>& contents = f->read();
+	vector<char> contents = f->read();
 	for (int y = n - 1; y >= 0; --y) {
 		for (int x = 0; x < n; ++x) {
 			std::cout << contents[y * n + x];

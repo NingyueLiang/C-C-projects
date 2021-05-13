@@ -1,6 +1,8 @@
 #pragma once
-
+//Lab5 Frank Liang & Pan Joe: This file declare an abstract interfere for command
 #include <string>
+#include "AbstractFileSystem.h"
+#include "AbstractFileFactory.h"
 
 class AbstractCommand {
 public:

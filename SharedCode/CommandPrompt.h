@@ -22,3 +22,5 @@ private:
 	AbstractFileSystem* system;
 	AbstractFileFactory* factory;
 };
+
+enum prompt {prompt_success = 0, prompt_exist = 63, user_quit = 64, prompt_fail = 65, prompt_invalid = 66};

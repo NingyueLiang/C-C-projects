@@ -5,7 +5,7 @@
 class TextFile : public AbstractFile {
 public:
 	TextFile(std::string n);
-	std::vector<char> read() override;
+	void read() override;
 	int write(std::vector<char> w) override;
 	int append(std::vector<char> a) override;
 	unsigned int getSize() override;

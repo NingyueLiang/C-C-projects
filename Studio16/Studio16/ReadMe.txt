@@ -1,3 +1,5 @@
+1.Joe Pan; Frank Liang
+
 2.a An interface can be declared using an abstract class with virtual functions that can be overrided by its derived classes.
 
 3.a It is an interface inheritance.

@@ -26,11 +26,8 @@ int TextFile::append(std::vector<char> a) {
 	return 0;
 }
 
-void TextFile::read() {
-	for (size_t i = 0; i < this->contents.size(); ++i) {
-		cout << contents[i];
-	}
-	cout << endl;
+std::vector<char> TextFile::read() {
+	return this->contents;
 }
 
 void TextFile::accept(AbstractFileVisitor* v) {

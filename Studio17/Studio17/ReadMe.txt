@@ -1,4 +1,4 @@
-1. Joe Pan
+1. Joe Pan; Frank Liang
 
 2. An ImageFile object with the name "test" was created. The object was written with 'X' on diagonals. Append does not work for ImageFile.
 The result is as expected:

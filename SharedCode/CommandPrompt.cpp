@@ -55,10 +55,27 @@ int CommandPrompt::run() {
 		else { 
 			if (in.find(" ") == in.npos) {
 				if (commands.find(in) != commands.end()) {
-					execute
+					string s = "";
+					if (commands[in]->execute(s) != 0) {
+						cout << "Command execution failed!" << endl;
+					}
+				}
+				else {
+					cout << "Command is invalid!" << endl;
 				}
 			}
-
+			else {
+				string first, latter;
+				istringstream iss(in);
+				iss >> first;
+				getline(iss, latter);
+				if (commands.find(latter) != commands.end()) {
+					commands[latter]->displayInfo();
+				}
+				else {
+					cout << "Command is invalid!" << endl;
+				}
+			}
 		}
 	}
 }

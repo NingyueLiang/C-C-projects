@@ -14,8 +14,16 @@ using namespace std;
 int main()
 {
 	ImageFile* i = new ImageFile("test_img");
+	
 	vector<char> pic = { 'X', ' ', 'X', ' ', 'X', ' ', 'X', ' ', 'X', '3' };
 	i->write(pic);
+	vector<char> store_content = i->read();
+	pic = { 'X', 'X', 'X', ' ', 'X', ' ', 'X', ' ', 'X', '3' };
+	i->write(pic);
+	if (store_content != i->read()) {
+		cout << "Read works" << endl;
+	}
+
 	BasicDisplayVisitor* v = new BasicDisplayVisitor();
 	i->accept(v);
 	MetadataDisplayVisitor* m = new MetadataDisplayVisitor();

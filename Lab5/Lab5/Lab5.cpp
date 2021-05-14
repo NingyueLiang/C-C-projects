@@ -1,4 +1,4 @@
-// Lab5.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// Lab5.cpp : Frank Liang & Joe Pan This file contains the 'main' function. Program execution begins and ends there.
 //
 #include "../../SharedCode/TextFile.h"
 #include "../../SharedCode/ImageFile.h"
@@ -12,6 +12,7 @@
 #include "../../SharedCode/LSCommand.h"
 #include "../../SharedCode/RemoveCommand.h"
 #include "../../SharedCode/CatCommand.h"
+#include "../../SharedCode/CopyCommand.h"
 
 using namespace std;
 
@@ -29,12 +30,14 @@ int main()
 	RemoveCommand* rmv = new RemoveCommand(sys);
 	CatCommand* ct = new CatCommand(sys);
 	DisplayCommand* dp = new DisplayCommand(sys);
+	CopyCommand* copy = new CopyCommand(sys);
 
 	cmd->addCommand("touch", touchC);
 	cmd->addCommand("ls", LS);
 	cmd->addCommand("rm", rmv);
 	cmd->addCommand("cat", ct);
 	cmd->addCommand("ds", dp);
+	cmd->addCommand("cp", copy);
 
 	cmd->run();
 }

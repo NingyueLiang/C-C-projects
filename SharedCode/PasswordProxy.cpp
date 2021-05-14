@@ -1,3 +1,4 @@
+//Lab5: Fl&JP This file defines PasswordProxy functionality
 #include "PasswordProxy.h"
 #include <iostream>
 
@@ -10,7 +11,7 @@ PasswordProxy::~PasswordProxy() {
 std::string PasswordProxy::passwordPrompt() {
 	std::cout << "Please enter the password!" << std::endl;
 	std::string input;
-	std::cin >> input;
+	std::getline(std::cin,input);
 
 	return input;
 }
@@ -68,4 +69,8 @@ void PasswordProxy::accept(AbstractFileVisitor* a) {
 	if (this->isChecked(pw)) {
 		return this->realFile->accept(a);
 	}
+}
+
+AbstractFile* PasswordProxy::clone(std::string in) {
+	return new PasswordProxy(this->realFile->clone(in), this->password);
 }

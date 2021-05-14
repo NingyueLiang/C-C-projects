@@ -2,13 +2,13 @@
 
 int SimpleFileSystem::addFile(std::string name, AbstractFile* file) {
 	if (this->files.count(name) > 0) {
-		return 5;
+		return already_exist;
 	}
 	if (!file) {
-		return 6;
+		return not_file;
 	}
 	this->files.insert(std::pair<std::string, AbstractFile*>(name, file));
-	return 0;
+	return exe_success;
 }
 
 AbstractFile* SimpleFileSystem::openFile(std::string name) {

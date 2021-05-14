@@ -1,3 +1,4 @@
+//Lab5: FL&JP: This file defines image file type.
 #include "ImageFile.h"
 #include "AbstractFileVisitor.h"
 #include <iostream>
@@ -44,4 +45,13 @@ std::vector<char> ImageFile::read() {
 
 void ImageFile::accept(AbstractFileVisitor* v) {
 	v->visit_ImageFile(this);
+}
+
+AbstractFile* ImageFile::clone(std::string in) {
+	
+		ImageFile* img = new ImageFile(in);
+		img->size = this->getSize();
+		img->contents = this->contents;
+		return img;
+
 }

@@ -26,6 +26,15 @@ int TextFile::append(std::vector<char> a) {
 	return 0;
 }
 
+
+AbstractFile* TextFile::clone(std::string in) {
+
+	TextFile* txt = new TextFile(in);
+	txt->contents = this->contents;
+	return txt;
+
+}
+
 std::vector<char> TextFile::read() {
 	return this->contents;
 }

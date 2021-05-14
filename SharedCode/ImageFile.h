@@ -1,5 +1,5 @@
 #pragma once
-
+//Lab5: FL & JP: this file defines image file type
 #include "AbstractFile.h"
 
 class ImageFile : public AbstractFile {
@@ -11,6 +11,7 @@ public:
 	unsigned int getSize() override;
 	std::string getName() override;
 	void accept(AbstractFileVisitor*) override;
+	AbstractFile* clone(std::string in) override;
 protected:
 	std::vector<char> contents;
 	std::string name;

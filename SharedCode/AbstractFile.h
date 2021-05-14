@@ -1,5 +1,5 @@
 #pragma once
-
+//Lab5: FL & JP: this file defines interface for file type
 #include <vector>
 #include <string>
 
@@ -14,4 +14,7 @@ public:
 	virtual unsigned int getSize() = 0;
 	virtual std::string getName() = 0;
 	virtual void accept(AbstractFileVisitor*) = 0;
+	virtual AbstractFile* clone(std::string in) = 0;
 };
+
+enum system { exe_success = 0, exe_fail = 1, already_exist = 5, not_file = 6};

@@ -1,3 +1,5 @@
+//Lab5: Fl&JP This file declares PasswordProxy class
+
 #pragma once
 #include "AbstractFile.h"
 #include<vector>
@@ -14,7 +16,7 @@ public:
 	unsigned int getSize() override;
 	std::string getName() override;
 	void accept(AbstractFileVisitor*) override;
-
+	AbstractFile* clone(std::string in) override;
 protected:
 	std::string passwordPrompt();
 	bool isChecked(std::string in);

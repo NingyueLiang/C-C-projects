@@ -2192,7 +2192,7 @@ public:
 		}
 	};
 
-	/*
+	
 
 	TEST_CLASS(Copy) {
 		TEST_METHOD(validcopy) {
@@ -2303,6 +2303,6 @@ public:
 			}
 		}
 	};
-	*/
+	
 }
 

@@ -13,3 +13,4 @@ public:
 	virtual int closeFile(AbstractFile*) = 0;
 	virtual std::set<std::string> getFileNames() = 0;
 };
+

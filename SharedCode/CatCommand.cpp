@@ -8,7 +8,7 @@ using namespace std;
 CatCommand::CatCommand(AbstractFileSystem* s) : sys(s) { }
 
 void CatCommand::displayInfo() {
-	cout << "CatCommand will add a new command to your program: cat <filename> [-a]" << endl;
+	cout << "CatCommand will append [-a] / rewrite new content to your file: cat <filename> [-a]" << endl;
 }
 
 int CatCommand::execute(std::string in) {
@@ -34,9 +34,11 @@ int CatCommand::execute(std::string in) {
 		string wr = "";
 		getline(cin, line);
 		while (line != ":q" && line != ":wq") {
-			wr += line + "\n";
+			wr = wr + line;
+			wr = wr + '\n';
 			getline(cin, line);
 		}
+		
 		wr = wr.substr(0, wr.size() - 1);
 		if (line == ":q") {
 			sys->closeFile(file);

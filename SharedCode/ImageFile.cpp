@@ -14,7 +14,7 @@ std::string ImageFile::getName() {
 }
 
 int ImageFile::write(std::vector<char> w) {
-	if (!isdigit(w.back())) {
+	if (w.empty() || !isdigit(w.back())) {
 		return 1;
 	}
 	int n = pow((w.back() - '0'), 2) + 1;

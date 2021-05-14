@@ -22,6 +22,7 @@ int DisplayCommand::execute(std::string in) {
 			for (auto it = begin(content); it != end(content); ++it) {
 				cout << (*it);
 			}
+			cout << endl;
 			this->sys->closeFile(res);
 			return command_success;
 		}

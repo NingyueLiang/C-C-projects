@@ -2058,6 +2058,7 @@ public:
 			Assert::IsFalse(isNotPasswordProxy);
 		}
 	};
+	*/
 
 	TEST_CLASS(DSCommand) {
 		TEST_METHOD(displaytext) {
@@ -2088,6 +2089,7 @@ public:
 			bool isNull = f == nullptr;
 			Assert::IsFalse(isNull);
 		}
+
 		TEST_METHOD(displaytextunformatted) {
 			AbstractFileSystem* sfs = new SimpleFileSystem();
 			AbstractFileFactory* sff = new SimpleFileFactory();
@@ -2189,6 +2191,8 @@ public:
 			Assert::AreNotEqual(0, ds->execute("file.txt"));
 		}
 	};
+
+	/*
 
 	TEST_CLASS(Copy) {
 		TEST_METHOD(validcopy) {

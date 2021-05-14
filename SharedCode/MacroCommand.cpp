@@ -4,7 +4,7 @@
 #include <iostream>
 using namespace std;
 
-MacroCommand::MacroCommand(AbstractFileSystem* s) {}
+MacroCommand::MacroCommand(AbstractFileSystem* s) : sys(s), par(nullptr) {}
 
 void MacroCommand::displayInfo() {
 	for (auto& command : commands) {

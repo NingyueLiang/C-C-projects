@@ -13,6 +13,9 @@
 #include "../../SharedCode/RemoveCommand.h"
 #include "../../SharedCode/CatCommand.h"
 #include "../../SharedCode/CopyCommand.h"
+#include "../../SharedCode/MacroCommand.h"
+#include "../../SharedCode/RenameParsingStrategy.h"
+
 
 using namespace std;
 
@@ -32,12 +35,19 @@ int main()
 	DisplayCommand* dp = new DisplayCommand(sys);
 	CopyCommand* copy = new CopyCommand(sys);
 
+	MacroCommand* rename = new MacroCommand(sys);
+	rename->addCommand(copy);
+	rename->addCommand(rmv);
+	RenameParsingStrategy* rmp = new RenameParsingStrategy();
+	rename->setParseStrategy(rmp);
+
 	cmd->addCommand("touch", touchC);
 	cmd->addCommand("ls", LS);
 	cmd->addCommand("rm", rmv);
 	cmd->addCommand("cat", ct);
 	cmd->addCommand("ds", dp);
 	cmd->addCommand("cp", copy);
+	cmd->addCommand("rn", rename);
 
 	cmd->run();
 }

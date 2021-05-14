@@ -14,4 +14,5 @@ public:
 private:
 	std::vector<AbstractCommand*> commands;
 	AbstractParsingStrategy* par;
+	AbstractFileSystem* sys;
 };

@@ -37,8 +37,11 @@ int LSCommand::execute(std::string in) {
 		MetadataDisplayVisitor* m = new MetadataDisplayVisitor();
 		while (it != names.end())
 		{
-			this->sys->openFile(*it)->accept(m);
+			auto file = this->sys->openFile(*it);
+			file->accept(m);
+			this->sys->closeFile(file);
 			it++;
+
 		}
 
 		return command_success;

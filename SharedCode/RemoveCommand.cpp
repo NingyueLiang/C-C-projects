@@ -11,7 +11,7 @@ void RemoveCommand::displayInfo() {
 }
 
 int RemoveCommand::execute(std::string in) {
-	if (sys->deleteFile(in) == 0) {
+	if (sys->deleteFile(in) == exe_success) {
 		return command_success;
 	}
 	else {

@@ -1,5 +1,5 @@
 #pragma once
-
+//Lab 5 FL & JP This file defines basic display visitor class
 #include "AbstractFileVisitor.h"
 
 class BasicDisplayVisitor : public AbstractFileVisitor {

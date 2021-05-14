@@ -1,3 +1,4 @@
+//Lab5 FL & PJ: this file defines simple file factory functionality
 #include "SimpleFileFactory.h"
 #include "TextFile.h"
 #include "ImageFile.h"

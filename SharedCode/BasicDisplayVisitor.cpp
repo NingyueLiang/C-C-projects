@@ -1,3 +1,5 @@
+//Lab 5 FL & JP This file defines basic display visitor functionality
+
 #include "BasicDisplayVisitor.h"
 #include "TextFile.h"
 #include "ImageFile.h"

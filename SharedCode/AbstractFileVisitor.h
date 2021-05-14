@@ -1,5 +1,5 @@
 #pragma once
-
+//Lab 5 FL & JP This file defines the interface for file visitor
 class TextFile;
 class ImageFile;
 

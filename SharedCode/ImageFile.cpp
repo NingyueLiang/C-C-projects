@@ -16,11 +16,11 @@ std::string ImageFile::getName() {
 
 int ImageFile::write(std::vector<char> w) {
 	if (w.empty() || !isdigit(w.back())) {
-		return 1;
+		return exe_fail;
 	}
 	int n = pow((w.back() - '0'), 2) + 1;
 	if (w.size() != n) {
-		return 2;
+		return wrong_size;
 	}
 	this->contents.clear();
 	this->size = w.back();
@@ -28,15 +28,15 @@ int ImageFile::write(std::vector<char> w) {
 		if (w[i] != 'X' && w[i] != ' ') {
 			this->contents.clear();
 			this->size = 0;
-			return 3;
+			return invalid_input;
 		}
 		this->contents.push_back(w[i]);
 	}
-	return 0;
+	return exe_success;
 }
 
 int ImageFile::append(std::vector<char> a) {
-	return 4;
+	return invalid_call;
 }
 
 std::vector<char> ImageFile::read() {

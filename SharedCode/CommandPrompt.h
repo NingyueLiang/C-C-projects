@@ -1,5 +1,5 @@
 #pragma once
-
+//Lab 5 FL & JP This file defines command prompt class
 #include <string>
 #include <map>
 #include "AbstractCommand.h"

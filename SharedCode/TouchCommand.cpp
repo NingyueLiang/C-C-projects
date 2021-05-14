@@ -1,4 +1,5 @@
 //Lab5 Frank Liang & Pan Joe: This file defines Touch command
+//Lab5 FL & PJ: this file defines touch command
 #include "TouchCommand.h"
 #include "PasswordProxy.h"
 #include <iostream>

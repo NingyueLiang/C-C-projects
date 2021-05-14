@@ -1,3 +1,4 @@
+//Lab 5 FL & JP This file defines the simple file system functionality
 #include "SimpleFileSystem.h"
 
 int SimpleFileSystem::addFile(std::string name, AbstractFile* file) {
@@ -27,23 +28,23 @@ AbstractFile* SimpleFileSystem::openFile(std::string name) {
 int SimpleFileSystem::closeFile(AbstractFile* file) {
 	if (this->open.find(file) != this->open.end()) {
 		open.erase(file);
-		return 0;
+		return exe_success;
 	}
 	else {
-		return 8;
+		return not_open;
 	}
 }
 
 int SimpleFileSystem::deleteFile(std::string name) {
 	if (this->files.count(name) == 0) {
-		return 9;
+		return not_exist;
 	} else if (this->open.find(this->files[name]) != this->open.end()) {
-		return 9;
+		return not_exist;
 	} else {
 		AbstractFile* deleted = files[name];
 		this->files.erase(name);
 		delete deleted;
-		return 0;
+		return exe_success;
 	}
 }
 

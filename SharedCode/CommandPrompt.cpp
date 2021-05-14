@@ -1,3 +1,4 @@
+//Lab 5 FL & JP This file defines command prompt functionality
 #include "CommandPrompt.h"
 #include <iostream>
 #include <sstream>

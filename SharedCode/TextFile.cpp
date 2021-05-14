@@ -1,3 +1,4 @@
+//Lab5 FL & JP This file defines text file class
 #include "TextFile.h"
 #include "AbstractFileVisitor.h"
 #include <iostream>
@@ -18,12 +19,12 @@ std::string TextFile::getName() {
 int TextFile::write(std::vector<char> w) {
 	this->contents.clear();
 	this->contents.assign(w.begin(), w.end());
-	return 0;
+	return exe_success;
 }
 
 int TextFile::append(std::vector<char> a) {
 	this->contents.insert(contents.end(), a.begin(), a.end());
-	return 0;
+	return exe_success;
 }
 
 

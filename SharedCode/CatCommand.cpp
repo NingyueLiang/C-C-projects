@@ -76,8 +76,8 @@ int CatCommand::execute(std::string in) {
 				return r;
 			}
 			sys->closeFile(file);
-			return command_success;
 		}
+        return command_success;
 	}
 	else {
 		return command_fail;

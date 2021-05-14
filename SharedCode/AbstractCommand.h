@@ -11,4 +11,4 @@ public:
 	virtual void displayInfo() = 0;
 };
 
-enum command {command_success, command_fail};
+enum command {command_success, command_fail, cannot_open_file};

@@ -26,7 +26,6 @@
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
-
 namespace UnitTest
 {
 	TEST_CLASS(textFile)

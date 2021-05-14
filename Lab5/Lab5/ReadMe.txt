@@ -1,7 +1,7 @@
 Lab 5 Readme
 
-Frank Liang & Joe Pan fliang@wustl.edu
-
+Frank Liang & Joe Pan fliang@wustl.edu; panfengzhou@wustl.edu
+50%/50%
 Test Case:
 
 Test LSCommand:

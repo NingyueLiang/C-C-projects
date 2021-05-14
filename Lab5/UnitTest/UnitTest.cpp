@@ -1954,7 +1954,7 @@ public:
 			AbstractFile* originalFile = sfs->openFile(filename);
 			bool isNull = originalFile == nullptr;
 			Assert::IsFalse(isNull);
-			// EXPECTATION -- FILE DOES NOT EXIST UNDER NEW NAME
+			// EXPECTATION -- FILE DOES NOT EXIST UNDER NEW NAME 
 			AbstractFile* newFile = sfs->openFile(newfilename + ".txt");
 			bool isNull2 = newFile == nullptr;
 			Assert::IsTrue(isNull2);;
@@ -2041,7 +2041,7 @@ public:
 			AbstractFile* newFile = sfs->openFile(newfilename + ".txt");
 			bool isNull2 = newFile == nullptr;
 			Assert::IsFalse(isNull2);
-			// SET UP USER PASSWORD INPUT AND READ AGAIN TO GET TRUE CONTENTS
+			// SET UP USER PASSWORD INPUT AND READ AGAIN TO GET TRUE CONTENTS 
 			ss_in << password + "\n";
 			vector<char> contentswithpassword = newFile->read();
 			Assert::AreEqual(contentswithpassword.size(), v.size());
@@ -2059,6 +2059,7 @@ public:
 			Assert::IsFalse(isNotPasswordProxy);
 		}
 	};
+
 	TEST_CLASS(DSCommand) {
 		TEST_METHOD(displaytext) {
 			AbstractFileSystem* sfs = new SimpleFileSystem();
@@ -2145,6 +2146,7 @@ public:
 			bool isNull = f == nullptr;
 			Assert::IsFalse(isNull);
 		}
+
 		TEST_METHOD(displayimageunformatted) {
 			AbstractFileSystem* sfs = new SimpleFileSystem();
 			AbstractFileFactory* sff = new SimpleFileFactory();
@@ -2188,15 +2190,18 @@ public:
 			Assert::AreNotEqual(0, ds->execute("file.txt"));
 		}
 	};
+
 	TEST_CLASS(Copy) {
 		TEST_METHOD(validcopy) {
 			AbstractFileSystem* sfs = new SimpleFileSystem();
 			AbstractFileFactory* sff = new SimpleFileFactory();
+
 			// REDIRECT COUT STREAM
 			streambuf* backup_out;
 			backup_out = cout.rdbuf();
 			stringstream ss_out;
 			cout.rdbuf(ss_out.rdbuf());
+
 			string filename = "file.txt";
 			Assert::AreEqual(0, sfs->addFile(filename, sff->createFile(filename)));
 			AbstractFile* f = sfs->openFile(filename);
@@ -2228,11 +2233,13 @@ public:
 		TEST_METHOD(invalidcopy) {
 			AbstractFileSystem* sfs = new SimpleFileSystem();
 			AbstractFileFactory* sff = new SimpleFileFactory();
+
 			// REDIRECT COUT STREAM
 			streambuf* backup_out;
 			backup_out = cout.rdbuf();
 			stringstream ss_out;
 			cout.rdbuf(ss_out.rdbuf());
+
 			string filename = "file.txt";
 			Assert::AreEqual(0, sfs->addFile(filename, sff->createFile(filename)));
 			AbstractFile* f = sfs->openFile(filename);
@@ -2252,11 +2259,13 @@ public:
 		TEST_METHOD(copypasswordprotected) {
 			AbstractFileSystem* sfs = new SimpleFileSystem();
 			AbstractFileFactory* sff = new SimpleFileFactory();
+
 			// REDIRECT COUT STREAM
 			streambuf* backup_out;
 			backup_out = cout.rdbuf();
 			stringstream ss_out;
 			cout.rdbuf(ss_out.rdbuf());
+
 			string filename = "file.txt";
 			AbstractFile* realfile = sff->createFile(filename);
 			vector<char> original = { 'h','i' };
@@ -2293,3 +2302,4 @@ public:
 	};
 	*/
 }
+

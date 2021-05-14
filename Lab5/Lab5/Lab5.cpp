@@ -9,7 +9,9 @@
 #include "../../SharedCode/TouchCommand.h"
 #include "../../SharedCode/CommandPrompt.h"
 #include "../../SharedCode/CommandTest.h"
-#include "../../SharedCode\LSCommand.h"
+#include "../../SharedCode/LSCommand.h"
+#include "../../SharedCode/RemoveCommand.h"
+#include "../../SharedCode/CatCommand.h"
 
 using namespace std;
 
@@ -24,9 +26,14 @@ int main()
 
 	TouchCommand* touchC = new TouchCommand(sys, fac);
 	LSCommand* LS = new LSCommand(sys);
+	RemoveCommand* rmv = new RemoveCommand(sys);
+	CatCommand* ct = new CatCommand(sys);
+
 
 	cmd->addCommand("touch", touchC);
 	cmd->addCommand("ls", LS);
+	cmd->addCommand("rm", rmv);
+	cmd->addCommand("cat", ct);
 
 	cmd->run();
 }

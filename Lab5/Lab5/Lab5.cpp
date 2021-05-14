@@ -49,7 +49,7 @@ int main()
 	cmd->addCommand("cp", copy);
 	cmd->addCommand("rn", rename);
 
-	cmd->run();
+	return cmd->run();
 }
 
 

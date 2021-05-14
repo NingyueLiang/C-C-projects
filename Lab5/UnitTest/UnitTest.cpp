@@ -1855,7 +1855,6 @@ public:
 		}
 	};
 
-	
 	TEST_CLASS(renameCommand) {
 		TEST_METHOD(renameParsingStrategy) { // checks parse function of RenameParsingStrategy correctly converts input string into a vector of strings representing instructions for copy and remove commands
 			// REDIRECT COUT STREAM -- PROTECT AGAINST ERRORS
@@ -2058,7 +2057,6 @@ public:
 			Assert::IsFalse(isNotPasswordProxy);
 		}
 	};
-	
 
 	TEST_CLASS(DSCommand) {
 		TEST_METHOD(displaytext) {

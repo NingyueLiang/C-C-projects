@@ -1,3 +1,4 @@
+
 #include "pch.h"
 #include "CppUnitTest.h"
 #define protected public
@@ -32,10 +33,10 @@ namespace UnitTest
 	{
 	public:
 		/*
-		// checks that the file is initialized with proper name and size, 
+		// checks that the file is initialized with proper name and size,
 		// expects size to be 0 and the name to match the input to the constructor
 		*/
-		TEST_METHOD(contstructor)  
+		TEST_METHOD(contstructor)
 		{
 			// REDIRECT COUT STREAM -- TO PROTECT AGAINST ERRORS
 			streambuf* backup_out;
@@ -60,7 +61,7 @@ namespace UnitTest
 			std::string fileName = "FileName.txt";
 			TextFile t(fileName);
 			std::vector<char> v = { 'h', 'i' };
-			Assert::AreEqual(0,t.write(v));
+			Assert::AreEqual(0, t.write(v));
 			Assert::AreEqual(static_cast<unsigned int>(v.size()), t.getSize());
 
 		}
@@ -389,151 +390,151 @@ namespace UnitTest
 	};
 
 	TEST_CLASS(simpleFileFactory) {
-	public:
-		TEST_METHOD(createFileValid) // creates two files by calling create on the file factory, the calls should return the new file objects that are both not null
-		{
-			// REDIRECT COUT STREAM -- TO PROTECT AGAINST ERRORS
-			streambuf* backup_out;
-			backup_out = cout.rdbuf();
-			stringstream ss_out;
-			cout.rdbuf(ss_out.rdbuf());
+public:
+	TEST_METHOD(createFileValid) // creates two files by calling create on the file factory, the calls should return the new file objects that are both not null
+	{
+		// REDIRECT COUT STREAM -- TO PROTECT AGAINST ERRORS
+		streambuf* backup_out;
+		backup_out = cout.rdbuf();
+		stringstream ss_out;
+		cout.rdbuf(ss_out.rdbuf());
 
-			SimpleFileFactory sff;
-			AbstractFile* res1 = sff.createFile("FileName.img");
-			bool isNull1 = res1 == nullptr;
-			Assert::IsFalse(isNull1);
-			AbstractFile* res2 = sff.createFile("FileName.txt");
-			bool isNull2 = res2 == nullptr;
-			Assert::IsFalse(isNull2);
-		}
-		TEST_METHOD(createUnknownExtension) // when a bad extension is passed, the factory should pass back a nullptr
-		{
-			// REDIRECT COUT STREAM -- TO PROTECT AGAINST ERRORS
-			streambuf* backup_out;
-			backup_out = cout.rdbuf();
-			stringstream ss_out;
-			cout.rdbuf(ss_out.rdbuf());
+		SimpleFileFactory sff;
+		AbstractFile* res1 = sff.createFile("FileName.img");
+		bool isNull1 = res1 == nullptr;
+		Assert::IsFalse(isNull1);
+		AbstractFile* res2 = sff.createFile("FileName.txt");
+		bool isNull2 = res2 == nullptr;
+		Assert::IsFalse(isNull2);
+	}
+	TEST_METHOD(createUnknownExtension) // when a bad extension is passed, the factory should pass back a nullptr
+	{
+		// REDIRECT COUT STREAM -- TO PROTECT AGAINST ERRORS
+		streambuf* backup_out;
+		backup_out = cout.rdbuf();
+		stringstream ss_out;
+		cout.rdbuf(ss_out.rdbuf());
 
-			SimpleFileFactory sfs;
-			AbstractFile* res1 = sfs.createFile("FileName.bla");
-			bool isNull = res1 == nullptr;
-			Assert::IsTrue(isNull);
-		}
+		SimpleFileFactory sfs;
+		AbstractFile* res1 = sfs.createFile("FileName.bla");
+		bool isNull = res1 == nullptr;
+		Assert::IsTrue(isNull);
+	}
 	};
-	
+
 	TEST_CLASS(basicDisplayVisitor) {
-	public:
-		TEST_METHOD(visitTextFile) { // tests output of basic display visitor for a text file, expects the contents of the file
-			std::string fileName = "FileName.txt";
-			TextFile t(fileName);
-			std::vector<char> v = { 'h', 'i' };
-			int resWrite = t.write(v);
-			// REDIRECT STD STREAM
-			streambuf* backup;
-			backup = cout.rdbuf();
-			stringstream ss;
-			cout.rdbuf(ss.rdbuf());
-			AbstractFileVisitor* bdv = new BasicDisplayVisitor;
-			t.accept(bdv);
-			string wordShouldBe = "hi";
-			string word;
-			ss >> word;
-			// ASSIGN COUT BACK TO STDOUT
-			cout.rdbuf(backup);
-			Assert::AreEqual(wordShouldBe, word);
-			Assert::AreEqual(0, resWrite);
+public:
+	TEST_METHOD(visitTextFile) { // tests output of basic display visitor for a text file, expects the contents of the file
+		std::string fileName = "FileName.txt";
+		TextFile t(fileName);
+		std::vector<char> v = { 'h', 'i' };
+		int resWrite = t.write(v);
+		// REDIRECT STD STREAM
+		streambuf* backup;
+		backup = cout.rdbuf();
+		stringstream ss;
+		cout.rdbuf(ss.rdbuf());
+		AbstractFileVisitor* bdv = new BasicDisplayVisitor;
+		t.accept(bdv);
+		string wordShouldBe = "hi";
+		string word;
+		ss >> word;
+		// ASSIGN COUT BACK TO STDOUT
+		cout.rdbuf(backup);
+		Assert::AreEqual(wordShouldBe, word);
+		Assert::AreEqual(0, resWrite);
+	}
+	TEST_METHOD(visitImageFile) { // tests the output the basic display visitor for an image file, expects 5 Xs
+		std::string fileName = "FileName.img";
+		ImageFile t(fileName);
+		std::vector<char> v = { 'X', ' ', 'X', ' ', 'X', ' ', 'X',' ', 'X', '3' };
+		Assert::AreEqual(0, t.write(v));
+		// REDIRECT STD STREAM
+		streambuf* backup;
+		backup = cout.rdbuf();
+		stringstream ss;
+		cout.rdbuf(ss.rdbuf());
+		AbstractFileVisitor* bdv = new BasicDisplayVisitor;
+		t.accept(bdv);
+		string outputShouldBe = "X";
+		string word;
+		int count = 0;
+		while (ss >> word) { // no skip ws -- wont skip white space! would have to extract one character at a time
+			Assert::AreEqual(outputShouldBe, word);
+			++count;
 		}
-		TEST_METHOD(visitImageFile) { // tests the output the basic display visitor for an image file, expects 5 Xs
-			std::string fileName = "FileName.img";
-			ImageFile t(fileName);
-			std::vector<char> v = { 'X', ' ', 'X', ' ', 'X', ' ', 'X',' ', 'X', '3' };
-			Assert::AreEqual(0, t.write(v));
-			// REDIRECT STD STREAM
-			streambuf* backup;
-			backup = cout.rdbuf();
-			stringstream ss;
-			cout.rdbuf(ss.rdbuf());
-			AbstractFileVisitor* bdv = new BasicDisplayVisitor;
-			t.accept(bdv);
-			string outputShouldBe = "X";
-			string word;
-			int count = 0;
-			while (ss >> word) { // no skip ws -- wont skip white space! would have to extract one character at a time
-				Assert::AreEqual(outputShouldBe, word);
-				++count;
-			}
-			// ASSIGN COUT BACK TO STDOUT
-			cout.rdbuf(backup);
-			Assert::AreEqual(5, count);
-		}
+		// ASSIGN COUT BACK TO STDOUT
+		cout.rdbuf(backup);
+		Assert::AreEqual(5, count);
+	}
 	};
 
 	TEST_CLASS(metadataDisplayVisitor) {
-	public:
-		TEST_METHOD(visitTextFile) { // tests the output of the metadata display visitor for a text file, expects the filename, type and size to be included in the print statement
-			std::string fileName = "FileName.txt";
-			TextFile t(fileName);
-			std::vector<char> v = { 'h', 'i' };
-			Assert::AreEqual(0, t.write(v));
-			// REDIRECT STD STREAM
-			streambuf* backup;
-			backup = cout.rdbuf();
-			stringstream ss;
-			cout.rdbuf(ss.rdbuf());
-			AbstractFileVisitor* bdv = new MetadataDisplayVisitor;
-			t.accept(bdv);
-			string word;
-			std::vector<string> printedWords;
-			while (ss >> word) {
-				printedWords.push_back(word);
-			}
-			std::vector<string>::iterator it1;
-			std::vector<string>::iterator it2;
-			std::vector<string>::iterator it3;
-			it1 = std::find(printedWords.begin(), printedWords.end(), fileName);
-			bool notEqual1 = it1 == printedWords.end();
-			Assert::IsFalse(notEqual1);
-			it2 = std::find(printedWords.begin(), printedWords.end(), to_string(t.getSize()));
-			bool notEqual2 = it2 == printedWords.end();
-			Assert::IsFalse(notEqual2);
-			it3 = std::find(printedWords.begin(), printedWords.end(), "text");
-			bool notEqual3 = it3 == printedWords.end();
-			Assert::IsFalse(notEqual3);
-			// ASSIGN COUT BACK TO STDOUT
-			cout.rdbuf(backup);
+public:
+	TEST_METHOD(visitTextFile) { // tests the output of the metadata display visitor for a text file, expects the filename, type and size to be included in the print statement
+		std::string fileName = "FileName.txt";
+		TextFile t(fileName);
+		std::vector<char> v = { 'h', 'i' };
+		Assert::AreEqual(0, t.write(v));
+		// REDIRECT STD STREAM
+		streambuf* backup;
+		backup = cout.rdbuf();
+		stringstream ss;
+		cout.rdbuf(ss.rdbuf());
+		AbstractFileVisitor* bdv = new MetadataDisplayVisitor;
+		t.accept(bdv);
+		string word;
+		std::vector<string> printedWords;
+		while (ss >> word) {
+			printedWords.push_back(word);
 		}
-		TEST_METHOD(visitImageFile) { // tests the output of the metadata display visitor for an image file, expects the filename, type and size to be included in the output
-			std::string fileName = "FileName.img";
-			ImageFile t(fileName);
-			std::vector<char> v = { 'X', ' ', 'X', ' ', 'X', ' ', 'X',' ', 'X', '3' };
-			Assert::AreEqual(0, t.write(v));
-			// REDIRECT STD STREAM
-			streambuf* backup;
-			backup = cout.rdbuf();
-			stringstream ss;
-			cout.rdbuf(ss.rdbuf());
-			AbstractFileVisitor* bdv = new MetadataDisplayVisitor;
-			t.accept(bdv);
-			string word;
-			std::vector<string> printedWords;
-			while (ss >> word) {
-				printedWords.push_back(word);
-			}
-			std::vector<string>::iterator it1;
-			std::vector<string>::iterator it2;
-			std::vector<string>::iterator it3;
-			it1 = std::find(printedWords.begin(), printedWords.end(), fileName);
-			bool notEqual1 = it1 == printedWords.end();
-			Assert::IsFalse(notEqual1);
-			it2 = std::find(printedWords.begin(), printedWords.end(), to_string(t.getSize()));
-			bool notEqual2 = it2 == printedWords.end();
-			Assert::IsFalse(notEqual2);
-			it3 = std::find(printedWords.begin(), printedWords.end(), "image");
-			bool notEqual3 = it3 == printedWords.end();
-			Assert::IsFalse(notEqual3);
-			// ASSIGN COUT BACK TO STDOUT
-			cout.rdbuf(backup);
+		std::vector<string>::iterator it1;
+		std::vector<string>::iterator it2;
+		std::vector<string>::iterator it3;
+		it1 = std::find(printedWords.begin(), printedWords.end(), fileName);
+		bool notEqual1 = it1 == printedWords.end();
+		Assert::IsFalse(notEqual1);
+		it2 = std::find(printedWords.begin(), printedWords.end(), to_string(t.getSize()));
+		bool notEqual2 = it2 == printedWords.end();
+		Assert::IsFalse(notEqual2);
+		it3 = std::find(printedWords.begin(), printedWords.end(), "text");
+		bool notEqual3 = it3 == printedWords.end();
+		Assert::IsFalse(notEqual3);
+		// ASSIGN COUT BACK TO STDOUT
+		cout.rdbuf(backup);
+	}
+	TEST_METHOD(visitImageFile) { // tests the output of the metadata display visitor for an image file, expects the filename, type and size to be included in the output
+		std::string fileName = "FileName.img";
+		ImageFile t(fileName);
+		std::vector<char> v = { 'X', ' ', 'X', ' ', 'X', ' ', 'X',' ', 'X', '3' };
+		Assert::AreEqual(0, t.write(v));
+		// REDIRECT STD STREAM
+		streambuf* backup;
+		backup = cout.rdbuf();
+		stringstream ss;
+		cout.rdbuf(ss.rdbuf());
+		AbstractFileVisitor* bdv = new MetadataDisplayVisitor;
+		t.accept(bdv);
+		string word;
+		std::vector<string> printedWords;
+		while (ss >> word) {
+			printedWords.push_back(word);
 		}
+		std::vector<string>::iterator it1;
+		std::vector<string>::iterator it2;
+		std::vector<string>::iterator it3;
+		it1 = std::find(printedWords.begin(), printedWords.end(), fileName);
+		bool notEqual1 = it1 == printedWords.end();
+		Assert::IsFalse(notEqual1);
+		it2 = std::find(printedWords.begin(), printedWords.end(), to_string(t.getSize()));
+		bool notEqual2 = it2 == printedWords.end();
+		Assert::IsFalse(notEqual2);
+		it3 = std::find(printedWords.begin(), printedWords.end(), "image");
+		bool notEqual3 = it3 == printedWords.end();
+		Assert::IsFalse(notEqual3);
+		// ASSIGN COUT BACK TO STDOUT
+		cout.rdbuf(backup);
+	}
 	};
 
 	TEST_CLASS(passwordProxy)
@@ -763,7 +764,7 @@ namespace UnitTest
 			// ASSIGN CIN BACK TO STDIN
 			cin.rdbuf(backup_in);
 		}
-		
+
 		TEST_METHOD(acceptValidPassword) // we would expect "hi" -- the contents of the file -- to be printed when a valid password is given for accept
 		{
 			// CREATE FILE AND FILE PROXY
@@ -1256,7 +1257,7 @@ namespace UnitTest
 			Assert::IsFalse(isNull);
 		}
 	};
-	
+
 	TEST_CLASS(removeCommand) {
 		TEST_METHOD(execute) { // confirms that execute, when passed a valid filename, will remove the given file from the filesystem -- removing the file again should fail, adding the file again should pass
 			// REDIRECT COUT STREAM -- TO PROTECT AGAINST ERRORS
@@ -2299,3 +2300,4 @@ namespace UnitTest
 		}
 	};
 }
+

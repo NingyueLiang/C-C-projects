@@ -10,6 +10,7 @@ public:
 	int deleteFile(std::string) override;
 	AbstractFile* openFile(std::string) override;
 	int closeFile(AbstractFile*) override;
+	std::set<std::string> getFileNames() override;
 protected:
 	std::map<std::string, AbstractFile*> files;
 	std::set<AbstractFile*> open;

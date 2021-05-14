@@ -39,7 +39,7 @@ int main()
 	cmd->addCommand("ds", dp);
 	cmd->addCommand("cp", copy);
 
-	cmd->run();
+	return cmd->run();
 }
 
 

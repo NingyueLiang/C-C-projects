@@ -3,9 +3,9 @@
 using  namespace std;
 
 std::vector<std::string> RenameParsingStrategy::parse(std::string in) {
-	string newn = in.substr(in.find(" ") + 1, in.size());
+	string exi = in.substr(0, in.find(" "));
 	vector<string> res;
 	res.push_back(in);
-	res.push_back(newn);
+	res.push_back(exi);
 	return res;
 }

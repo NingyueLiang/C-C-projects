@@ -6,6 +6,11 @@
 #include "..\..\\SharedCode\SimpleFileSystem.h"
 #include "..\..\\SharedCode\SimpleFileFactory.h"
 #include "..\..\\SharedCode\TouchCommand.h"
+#include "..\..\\SharedCode\BasicDisplayVisitor.h"
+
+#include <iostream>
+
+using namespace std;
 
 int main()
 {
@@ -16,7 +21,14 @@ int main()
 	cp->setFileSystem(s);
 	cp->setFileFactory(f);
 	cp->addCommand("touch", t);
-	cp->addCommand("touch2", t);
 	cp->run();
+	
+	string content = "Hello World!";
+	vector<char> vcontent(content.begin(), content.end());
+	AbstractFile* file = s->openFile("test.txt");
+	file->write(vcontent);
+	AbstractFileVisitor* vis = new BasicDisplayVisitor();
+	file->accept(vis);
+
 }
 

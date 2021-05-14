@@ -8,7 +8,7 @@
 #include "../../SharedCode/MetadataDisplayVisitor.h"
 #include "../../SharedCode/TouchCommand.h"
 #include "../../SharedCode/CommandPrompt.h"
-#include "../../SharedCode/CommandTest.h"
+#include "../../SharedCode/DisplayCommand.h"
 #include "../../SharedCode/LSCommand.h"
 #include "../../SharedCode/RemoveCommand.h"
 #include "../../SharedCode/CatCommand.h"
@@ -28,12 +28,13 @@ int main()
 	LSCommand* LS = new LSCommand(sys);
 	RemoveCommand* rmv = new RemoveCommand(sys);
 	CatCommand* ct = new CatCommand(sys);
-
+	DisplayCommand* dp = new DisplayCommand(sys);
 
 	cmd->addCommand("touch", touchC);
 	cmd->addCommand("ls", LS);
 	cmd->addCommand("rm", rmv);
 	cmd->addCommand("cat", ct);
+	cmd->addCommand("ds", dp);
 
 	cmd->run();
 }

@@ -16,7 +16,7 @@ int TouchCommand::execute(std::string filename){
 		if (a != nullptr) {
 			cout << "What is the password?" << endl;
 			string pw;
-			cin >> pw;
+			getline(cin, pw);
 			PasswordProxy* pi = new PasswordProxy(a, pw);
 			int res = this->sys->addFile(filename.substr(0, filename.find(" ")), pi);
 			if (res == command_success) {

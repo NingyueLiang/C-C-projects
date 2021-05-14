@@ -60,7 +60,7 @@ int CommandPrompt::run() {
 					
 				}
 				else {
-					cout << "Command is invalid!" << endl;
+					cout << "Command input is invalid or empty!" << endl;
 					
 				}
 			}
@@ -75,7 +75,7 @@ int CommandPrompt::run() {
 					
 				    }
 				    else {
-					    cout << "Command is invalid!" << endl;
+					    cout << "Command input is invalid!" << endl;
 						
 				    }
 				}

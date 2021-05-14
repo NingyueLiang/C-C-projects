@@ -16,6 +16,7 @@ int main()
 	cp->setFileSystem(s);
 	cp->setFileFactory(f);
 	cp->addCommand("touch", t);
+	cp->addCommand("touch2", t);
 	cp->run();
 }
 

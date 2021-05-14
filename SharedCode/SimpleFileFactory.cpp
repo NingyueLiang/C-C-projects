@@ -5,6 +5,9 @@
 using namespace std;
 
 AbstractFile* SimpleFileFactory::createFile(std::string name) {
+	if (name.size() < 3) {
+		return nullptr;
+	}
 	std::string tail = name.substr(name.size() - 3, name.size());
 	if (tail == "txt") {
 		TextFile* newFile = new TextFile(name);

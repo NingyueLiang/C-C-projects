@@ -51,7 +51,7 @@ int CommandPrompt::run() {
 			this->listCommands();
 		}
 		else { 
-			if (in.find(" ") == in.npos) {
+			if (in.find(' ') == in.npos) {
 				if (commands.find(in) != commands.end()) {
 					string s = "";
 					if (commands[in]->execute(s) != 0) {
@@ -78,6 +78,7 @@ int CommandPrompt::run() {
 				else {
 					if (commands.find(first) != commands.end()) {
 						getline(iss, latter);
+						latter = latter.substr(1, latter.size());
 						if (int r = commands[first]->execute(latter) != 0) {
 							cout << "Command execution failed!" << endl;
 						}

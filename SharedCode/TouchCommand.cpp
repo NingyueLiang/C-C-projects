@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 
-TouchCommand::TouchCommand( AbstractFileSystem* s, AbstractFileFactory* f) : fac(f), sys(s) { }
+TouchCommand::TouchCommand(AbstractFileSystem* s, AbstractFileFactory* f) : fac(f), sys(s) { }
 
 void TouchCommand::displayInfo() {
 	cout << "touch creates a file, touch can be invoked with the command Usage: touch <filename>" << endl;

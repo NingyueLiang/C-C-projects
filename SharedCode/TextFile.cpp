@@ -43,3 +43,7 @@ std::vector<char> TextFile::read() {
 void TextFile::accept(AbstractFileVisitor* v) {
 	v->visit_TextFile(this);
 }
+
+bool TextFile::search_accept(AbstractFileVisitor* v, string in) {
+	return v->search_TextFile(this, in);
+}

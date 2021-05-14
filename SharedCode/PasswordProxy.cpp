@@ -71,6 +71,16 @@ void PasswordProxy::accept(AbstractFileVisitor* a) {
 	}
 }
 
+bool PasswordProxy::search_accept(AbstractFileVisitor* a, std::string in) {
+	std::string pw = this->passwordPrompt();
+	if (this->isChecked(pw)) {
+		return this->realFile->search_accept(a,in);
+	}
+	else {
+		return false;
+	}
+}
+
 AbstractFile* PasswordProxy::clone(std::string in) {
 	return new PasswordProxy(this->realFile->clone(in), this->password);
 }

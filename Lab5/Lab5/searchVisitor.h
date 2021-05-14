@@ -1,8 +1,8 @@
 #pragma once
 //Lab 5 FL & JP This file defines basic display visitor class
-#include "AbstractFileVisitor.h"
+#include "../../SharedCode/AbstractFileVisitor.h"
 
-class BasicDisplayVisitor : public AbstractFileVisitor {
+class searchVisitor : public AbstractFileVisitor {
 public:
 	void visit_TextFile(TextFile*) override;
 	void visit_ImageFile(ImageFile*) override;

@@ -15,6 +15,7 @@ public:
 	virtual std::string getName() = 0;
 	virtual void accept(AbstractFileVisitor*) = 0;
 	virtual AbstractFile* clone(std::string in) = 0;
+	virtual bool search_accept(AbstractFileVisitor* v, std::string in) = 0;
 };
 
 enum system { exe_success = 0, exe_fail = 1, wrong_size = 2, invalid_input =3, invalid_call =4, already_exist = 5, not_file = 6, not_open = 8, not_exist = 9};

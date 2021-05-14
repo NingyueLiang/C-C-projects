@@ -15,7 +15,7 @@
 #include "../../SharedCode/CopyCommand.h"
 #include "../../SharedCode/MacroCommand.h"
 #include "../../SharedCode/RenameParsingStrategy.h"
-
+#include "GrepCommand.h"
 
 using namespace std;
 
@@ -34,6 +34,7 @@ int main()
 	CatCommand* ct = new CatCommand(sys);
 	DisplayCommand* dp = new DisplayCommand(sys);
 	CopyCommand* copy = new CopyCommand(sys);
+	GrepCommand* gr = new GrepCommand(sys);
 
 	MacroCommand* rename = new MacroCommand(sys);
 	rename->addCommand(copy);
@@ -48,6 +49,7 @@ int main()
 	cmd->addCommand("ds", dp);
 	cmd->addCommand("cp", copy);
 	cmd->addCommand("rn", rename);
+	cmd->addCommand("grep", gr);
 
 	return cmd->run();
 }

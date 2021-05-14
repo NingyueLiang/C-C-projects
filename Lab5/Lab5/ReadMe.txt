@@ -1,7 +1,7 @@
 Lab 5 Readme
 
 Frank Liang & Joe Pan fliang@wustl.edu; panfengzhou@wustl.edu
-50%/50% work together 
+50%/50% work together + Extra Credit
 
 Luckily no errors; Warning: C26451: Cast a 4 byte to a 8 byte value. Might cause overflow, but after consulting our professor, this won't happen in the case, as long as it work normally.
 
@@ -139,4 +139,40 @@ $  ls
 
 All outcomes are reasonable and correct.
 
+----------------------------------------------------------------Unit test All pass
+Extra Credit: 
+Test Grep:
+$  touch 1.txt
 
+Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command.
+$  cat 1.txt
+Enter data you would like to write to this file. Enter :wq to save the file and exit, enter :q to exit without saving.
+hello sdfs Hellp
+:wq
+
+Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command.
+$  touch 2.txt -p
+What is the password?
+1
+
+Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command.
+$  cat 2.txt
+Enter data you would like to write to this file. Enter :wq to save the file and exit, enter :q to exit without saving.
+Hello a help
+:wq
+Please enter the password!
+1
+
+Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command.
+$  grep Hello
+Please enter the password!
+1
+2.txt
+
+Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command.
+$  grep Hellp
+1.txt
+Please enter the password!
+1
+
+The results are as expected and reasonable.

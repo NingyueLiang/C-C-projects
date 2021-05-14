@@ -4,7 +4,7 @@
 #include "TextFile.h"
 #include "ImageFile.h"
 #include <iostream>
-
+#include <string>
 using namespace std;
 
 void BasicDisplayVisitor::visit_TextFile(TextFile* f) {
@@ -23,4 +23,12 @@ void BasicDisplayVisitor::visit_ImageFile(ImageFile* f) {
 		}
 		std::cout << "\n";
 	}
+}
+
+bool BasicDisplayVisitor::search_TextFile(TextFile*, std::string) {
+	return false;
+}
+
+bool BasicDisplayVisitor::search_ImageFile(ImageFile*, std::string) {
+	return false;
 }

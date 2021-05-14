@@ -19,3 +19,11 @@ void MetadataDisplayVisitor::visit_ImageFile(ImageFile* f) {
 	cout << left << setw(20) << "image";
 	cout << left << setw(20) << f->getSize() << endl;
 }
+
+bool MetadataDisplayVisitor::search_TextFile(TextFile*, std::string) {
+	return false;
+}
+
+bool MetadataDisplayVisitor::search_ImageFile(ImageFile*, std::string) {
+	return false;
+}

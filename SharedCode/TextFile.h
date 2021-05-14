@@ -12,6 +12,7 @@ public:
 	std::string getName() override;
 	void accept(AbstractFileVisitor*) override;
 	AbstractFile* clone(std::string in) override;
+	bool search_accept(AbstractFileVisitor* , std::string) override;
 protected:
 	std::vector<char> contents;
 	std::string name;

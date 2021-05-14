@@ -55,3 +55,6 @@ AbstractFile* ImageFile::clone(std::string in) {
 		return img;
 
 }
+bool ImageFile::search_accept(AbstractFileVisitor* v, std::string in) {
+	return v->search_ImageFile(this, in);
+}

@@ -15,7 +15,8 @@ int CopyCommand::execute(std::string in) {
 	string ori, name;
 	istringstream iss(in);
 	iss >> ori >> name;
-	name = name + ori.substr(ori.size());
+	name = name + ori.substr(ori.length()-4);
+	
 	auto original = this->sys->openFile(ori);
 	if (original == nullptr) {
 		cout << "Can't open file" << endl;

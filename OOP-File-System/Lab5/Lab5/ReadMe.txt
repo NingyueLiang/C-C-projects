@@ -1,7 +1,6 @@
-Lab 5 Readme
+OOP File System
 
-Frank Liang & Joe Pan fliang@wustl.edu; panfengzhou@wustl.edu
-50%/50% work together + Extra Credit
+Frank Liang & Joe Pan 
 
 Luckily no errors; Warning: C26451: Cast a 4 byte to a 8 byte value. Might cause overflow, but after consulting our professor, this won't happen in the case, as long as it work normally.
 
@@ -139,8 +138,7 @@ $  ls
 
 All outcomes are reasonable and correct.
 
-----------------------------------------------------------------Unit test All pass
-Extra Credit: 
+----------------------------------------------------------------Unit test All pass 
 Test Grep:
 $  touch 1.txt
 

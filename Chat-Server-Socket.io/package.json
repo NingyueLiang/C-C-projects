@@ -1,0 +1,15 @@
+{
+  "name": "chatroom",
+  "version": "1.0.0",
+  "description": "cse330 chatroom",
+  "main": "chat-server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Frank",
+  "dependencies": {
+    "mime": "~2.4.6",
+    "socket.io": "~4.0.0"
+  },
+  "license": "ISC"
+}
